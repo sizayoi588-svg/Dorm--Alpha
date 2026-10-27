@@ -3,153 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dorm Alpha</title>
+<meta name="theme-color" content="#111019">
+<title>Original Character Archive</title>
 <style>
+:root{--bg:#100f18;--panel:#1a1826;--panel2:#211d32;--line:#343044;--text:#f1efff;--muted:#aaa5bd;--purple:#a98aff;--blue:#8ed5f2;--gold:#e5c98c}
 *{box-sizing:border-box}
-body{margin:0;background:#101019;color:#f1efff;font-family:Arial,sans-serif}
-header{padding:24px 18px;background:#191725;border-bottom:1px solid #49405f}
-.tag{color:#b7a4ff;letter-spacing:3px;font-size:11px}
-h1{font-size:30px;margin:12px 0}
-p{line-height:1.8}
-header p,.muted{color:#bcb8ca}
-nav{display:flex;gap:10px;margin-top:18px}
-button{background:#29243b;color:white;border:1px solid #645486;border-radius:9px;padding:11px 15px;font-size:14px;cursor:pointer}
-button.active,.primary{background:#7455bd}
-main{padding:20px 16px;max-width:720px;margin:auto}
-.card{display:block;width:100%;text-align:left;background:#191925;border:1px solid #393447;border-radius:14px;padding:18px;margin:12px 0;color:#f1efff}
-.card h2,.card h3{color:#c7b7ff;margin-top:0}
-.card p{margin-bottom:0}
-.card:active{background:#29243b}
-.back{margin-bottom:16px}
-h2{color:#c7b7ff}
-.entry{border-top:1px solid #393447;padding:14px 0}
-footer{text-align:center;padding:25px;color:#8f899f;font-size:12px}
-[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans Thai",sans-serif;line-height:1.65}
+header{padding:25px 18px 20px;background:linear-gradient(135deg,#211934,#171522 70%);border-bottom:1px solid var(--line)}
+.wrap{max-width:900px;margin:auto}
+.tag{font-size:11px;letter-spacing:3px;color:var(--purple);font-weight:bold}
+h1{font-size:29px;line-height:1.2;margin:7px 0}
+h2{font-size:23px;margin:0 0 7px}
+h3{font-size:18px;margin:0 0 6px;color:#d7c7ff}
+p{margin:8px 0}
+.muted{color:var(--muted);font-size:14px}
+nav,.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
+button{font:inherit;cursor:pointer;border:1px solid #49415f;border-radius:10px;background:#29243b;color:var(--text);padding:10px 14px}
+button:hover,button.active{background:#7552bd;border-color:#9876e8}
+main{max-width:900px;margin:auto;padding:22px 15px 50px}
+.section-head{margin:6px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
+.card{display:block;text-align:left;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px;color:var(--text);transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:#8d70c7}
+.card .arrow{float:right;color:var(--purple)}
+.card p{font-size:13px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid #4b4265;color:#d3c3ff;border-radius:20px;padding:2px 9px;font-size:11px;margin:5px 4px 0 0}
+.blue{border-color:#385c6c;color:var(--blue)}
+.gold{border-color:#66583b;color:var(--gold)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px}
+.back{margin:0 0 15px;background:transparent}
+.kicker{color:var(--purple);font-size:12px;letter-spacing:2px;font-weight:bold}
+.profile-title{font-size:28px;margin:3px 0 4px}
+hr{border:0;border-top:1px solid var(--line);margin:17px 0}
+footer{text-align:center;color:#777286;font-size:12px;padding:20px}
+.hidden{display:none!important}
+.notice{border-left:3px solid var(--gold);padding:10px 13px;background:#211d27;color:#d9d1bd;border-radius:0 8px 8px 0;font-size:13px}
+@media(min-width:650px){header{padding:32px 24px 24px}main{padding:28px 22px 60px}.profile-title{font-size:34px}}
 </style>
 </head>
 <body>
 <header>
+ <div class="wrap">
   <div class="tag">ORIGINAL CHARACTER ARCHIVE</div>
-  <h1>Dorm Alpha</h1>
-  <p>ยินดีต้อนรับสู่โลกที่ไม่ควรมีใครได้รับคำเชิญ</p>
-  <nav>
-    <button id="worldTab" class="active" onclick="showHome('world')">World</button>
-    <button id="charactersTab" onclick="showHome('characters')">Characters</button>
+  <h1>Dorm Alpha & Other Worlds</h1>
+  <p class="muted">คลังเก็บจักรวาล เรื่องราว และตัวละครต้นฉบับของฉัน</p>
+  <nav id="universeNav">
+   <button class="active" onclick="chooseUniverse('dorm',this)">Universe 01 · Dorm Alpha</button>
+   <button onclick="chooseUniverse('second',this)">Universe 02 · ยังไม่ตั้งชื่อ</button>
   </nav>
+ </div>
 </header>
-
 <main>
-  <section id="worldHome">
-    <button class="card" onclick="openPage('archivePage')">
-      <h2>World Archive ↗</h2>
-      <p class="muted">รวมข้อมูลและเรื่องราวของจักรวาล Dorm Alpha</p>
-    </button>
-    <button class="card" onclick="openPage('originPage')">
-      <h2>จุดเริ่มต้น ↗</h2>
-      <p class="muted">โลกเปลี่ยนแปลงไปได้อย่างไร?</p>
-    </button>
-    <button class="card" onclick="openPage('invitationPage')">
-      <h2>คำเชิญ ↗</h2>
-      <p class="muted">หากได้รับคำเชิญจาก Dorm Alpha...</p>
-    </button>
-  </section>
-
-  <section id="charactersHome" hidden>
-    <h2>Character Archive</h2>
-    <p class="muted">เลือกตัวละครเพื่อเปิดอ่านข้อมูล</p>
-    <button class="card" onclick="openPage('nemuPage')">
-      <h2>Nemu ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
-    </button>
-    <button class="card" onclick="openPage('walkingPage')">
-      <h2>Walking Hell ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
-    </button>
-    <button class="card" onclick="openPage('croresPage')">
-      <h2>Crores ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
-    </button>
-    <button class="card" onclick="openPage('xhoePage')">
-      <h2>Xhoe ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
-    </button>
-  </section>
-
-  <section id="archivePage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>World Archive</h2>
-    <p>คลังบันทึกเรื่องราวของโลกและจักรวาล Dorm Alpha</p>
-    <p class="muted">หน้านี้จะรวบรวมประวัติ เหตุการณ์สำคัญ กฎของโลก และข้อมูลที่คุณเพิ่มในอนาคต</p>
-  </section>
-
-  <section id="originPage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>จุดเริ่มต้น</h2>
-    <p>หลายศตวรรษก่อน รอยแยกบนท้องฟ้าได้เปลี่ยนแปลงโลกไปตลอดกาล</p>
-    <p>พลังอันตรายปรากฏขึ้น และองค์กรต่าง ๆ เริ่มล่มสลาย</p>
-    <p class="muted">นี่คือจุดเริ่มต้นของเรื่องราวที่ยังมีอีกหลายส่วนรอการเปิดเผย</p>
-  </section>
-
-  <section id="invitationPage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>คำเชิญจาก Dorm Alpha</h2>
-    <p>หากคุณได้รับคำเชิญจาก Dorm Alpha...</p>
-    <h3>จงเผามันทิ้ง</h3>
-    <p class="muted">อย่าคิดว่าคำเชิญทุกฉบับถูกส่งมาเพื่อช่วยเหลือคุณ</p>
-  </section>
-
-  <section id="nemuPage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>Nemu</h2>
-    <p class="muted">ข้อมูลตัวละคร</p>
-    <p>ตัวละครที่มีเรื่องราวและความรู้สึกเป็นของตัวเอง</p>
-    <p class="muted">ประวัติและรายละเอียดเพิ่มเติมจะเพิ่มได้ภายหลัง</p>
-  </section>
-
-  <section id="walkingPage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>Walking Hell</h2>
-    <p>เรื่องราวเริ่มต้นบนรถไฟที่พาผู้โดยสารไปยังจุดหมายในเวลาเพียงไม่กี่วินาที แต่ประสบการณ์ภายในกลับยาวนานอย่างเหลือเชื่อ</p>
-    <p class="muted">การเดินทางครั้งนั้นเปลี่ยนชีวิตผู้โดยสารไปตลอดกาล</p>
-  </section>
-
-  <section id="croresPage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>Crores</h2>
-    <p class="muted">ข้อมูลประวัติ พลัง และเรื่องราวของตัวละครยังรอการเพิ่มเติม</p>
-  </section>
-
-  <section id="xhoePage" class="detail" hidden>
-    <button class="back" onclick="goBack()">← กลับ</button>
-    <h2>Xhoe</h2>
-    <p class="muted">ข้อมูลประวัติ พลัง และเรื่องราวของตัวละครยังรอการเพิ่มเติม</p>
-  </section>
+ <section id="home">
+  <div class="section-head">
+   <div class="kicker" id="universeKicker">UNIVERSE 01</div>
+   <h2 id="universeTitle">Dorm Alpha</h2>
+   <p class="muted" id="universeDescription">โลกที่ไม่ควรมีใครได้รับคำเชิญ</p>
+  </div>
+  <div class="tabs">
+   <button class="active" id="worldTab" onclick="showSection('world',this)">World</button>
+   <button id="charactersTab" onclick="showSection('characters',this)">Characters</button>
+  </div>
+  <div id="worldSection" style="margin-top:16px"></div>
+  <div id="charactersSection" class="hidden" style="margin-top:16px"></div>
+ </section>
+ <section id="detail" class="hidden">
+  <button class="back" onclick="goHome()">← กลับไปหน้าจักรวาล</button>
+  <div id="detailContent"></div>
+ </section>
 </main>
-
-<footer>Dorm Alpha · Original World & Characters</footer>
-
+<footer>Original Character Archive · Created for personal worldbuilding</footer>
 <script>
-const pages=['worldHome','charactersHome','archivePage','originPage',
-'invitationPage','nemuPage','walkingPage','croresPage','xhoePage'];
-let previousPage='worldHome';
-
-function openPage(id){
-  const current=pages.find(p=>!document.getElementById(p).hidden);
-  if(current && (current==='worldHome'||current==='charactersHome')){
-    previousPage=current;
-  }
-  pages.forEach(p=>document.getElementById(p).hidden=(p!==id));
-  window.scrollTo(0,0);
+const universes = {
+ dorm: {
+  kicker:"UNIVERSE 01", title:"Dorm Alpha",
+  description:"โลกที่ไม่ควรมีใครได้รับคำเชิญ",
+  world:[
+   {id:"archive",title:"World Archive",desc:"รวมข้อมูลและเรื่องราวของจักรวาล Dorm Alpha",body:"จักรวาล Dorm Alpha มีเรื่องราวและกฎของโลกเป็นของตัวเอง ข้อมูลของจักรวาลนี้จะถูกเก็บแยกจากจักรวาลอื่น เพื่อไม่ให้ประวัติและเหตุการณ์ปะปนกัน."},
+   {id:"beginning",title:"จุดเริ่มต้น",desc:"โลกเปลี่ยนแปลงไปได้อย่างไร?",body:"หลายศตวรรษก่อน รอยแยกบนท้องฟ้าได้เปลี่ยนแปลงโลกไปตลอดกาล พลังอันตรายปรากฏขึ้น และองค์กรต่าง ๆ เริ่มล่มสลาย ข้อมูลรายละเอียดเพิ่มเติมสามารถเติมได้ภายหลังตามต้นฉบับของผู้สร้าง."},
+   {id:"invitation",title:"คำเชิญ",desc:"หากได้รับคำเชิญจาก Dorm Alpha…",body:"หากคุณได้รับคำเชิญจาก Dorm Alpha… จงเผามันทิ้ง ข้อความนี้คือส่วนหนึ่งของปริศนาและบรรยากาศของจักรวาล."}
+  ],
+  characters:[
+   {id:"nemu",title:"Nemu",desc:"ตัวละครจากจักรวาล Dorm Alpha",body:"ข้อมูลตัวละคร Nemu อยู่ในจักรวาล Dorm Alpha เท่านั้น ประวัติฉบับเต็มสามารถเพิ่มเติมจากบันทึกต้นฉบับได้"},
+   {id:"walkinghell",title:"Walking Hell",desc:"ผู้เดินทางผ่านเหตุการณ์อันโหดร้าย",body:"เรื่องราวของรถไฟที่พาผู้โดยสารไปยังปลายทางในเวลาเพียงชั่วพริบตา แต่ผู้โดยสารกลับต้องเผชิญประสบการณ์ยาวนานเกินจินตนาการ รายละเอียดฉบับเต็มให้ยึดตามบันทึกต้นฉบับ"},
+   {id:"crores",title:"Crores",desc:"ตัวละครจากจักรวาล Dorm Alpha",body:"หน้านี้เตรียมไว้สำหรับประวัติ ความสามารถ และเรื่องราวของ Crores โดยจะไม่แต่งรายละเอียดที่ยังไม่ได้รับจากผู้สร้าง"},
+   {id:"xhoe",title:"Xhoe",desc:"ตัวละครจากจักรวาล Dorm Alpha",body:"หน้านี้เตรียมไว้สำหรับประวัติ ความสามารถ และเรื่องราวของ Xhoe โดยจะไม่แต่งรายละเอียดที่ยังไม่ได้รับจากผู้สร้าง"}
+  ]
+ },
+ second: {
+  kicker:"UNIVERSE 02", title:"จักรวาลใหม่",
+  description:"จักรวาลของ Kiuas และ 18 Y · แยกจาก Dorm Alpha",
+  world:[
+   {id:"secondarchive",title:"World Archive",desc:"คลังข้อมูลของจักรวาลใหม่",body:"จักรวาลนี้แยกจาก Dorm Alpha อย่างชัดเจน ตัวละครและเหตุการณ์ของทั้งสองจักรวาลจะไม่เชื่อมโยงกัน เว้นแต่ผู้สร้างจะกำหนดไว้ภายหลัง."},
+   {id:"darkworld",title:"ปรารถนาในเงามืด",desc:"Dark Fantasy / Survival Narrative",body:"ดินแดนที่ล่มสลายและถูกปกคลุมด้วยหิมะดำเป็นฉากหลังของเรื่องราวหนึ่ง ส่วนอีกด้านหนึ่งมี Black Street, Fixers และภัยพิบัติที่เกี่ยวข้องกับ Elisia รายละเอียดของโลกจะขยายตามเรื่องราวต้นฉบับ."},
+   {id:"elisia",title:"เหตุการณ์ Elisia",desc:"ปมสำคัญในเส้นเรื่องของ 18 Y",body:"เหตุการณ์ Elisia เป็นจุดเปลี่ยนสำคัญในชีวิตของ 18 Y และเป็นส่วนหนึ่งของปริศนาที่เขาตามหาความจริงอยู่ รายละเอียดเพิ่มเติมจะถูกเปิดเผยเมื่อเรื่องดำเนินไป"}
+  ],
+  characters:[
+   {id:"kiuas",title:"Kiuas",desc:"เด็กสาวผู้เรียนรู้การเอาตัวรอดในโลกอันโหดร้าย",body:"Kiuas เติบโตในดินแดนที่ล่มสลายและเรียนรู้ที่จะเอาตัวรอดด้วยการหลบซ่อนและเฝ้ามองผู้อื่น หลังเหตุการณ์ที่ทำให้เธอสูญเสียผู้คนที่เคยแบ่งปันอาหารให้ เธอจึงตั้งชื่อใหม่ให้ตัวเองว่า Kiuas เธอมีความสามารถในการรับรู้ตำแหน่งของสิ่งมีชีวิตรอบตัว และปล่อยออร่าที่ทำให้ศัตรูเชื่องช้าลงได้\\n\\nแม้จะทำหน้าตลกหรือปฏิเสธความรับผิดชอบเมื่อหวาดกลัว แต่เบื้องหลังนั้นคือความรู้สึกผิดและความกลัวที่ยังไม่คลี่คลาย"},
+   {id:"18y",title:"18 Y",desc:"Grade 2 Fixer · ชายผู้ตามหาความจริง",body:"18 Y เคยเป็นคนธรรมดาที่พยายามยิ้มสู้กับชีวิต ก่อนเข้าร่วมองค์กร K.A.L เพื่อต่อต้าน Elisia เขาเคยต่อสู้กับ Lim อย่างสูสีและได้รับบาดแผลที่มือขวา ซึ่งต้องพันผ้าไว้เสมอ\\n\\nภายหลังเขาได้ใช้ชีวิตร่วมกับ Nemu แต่ภัยพิบัติ Elisia พรากเธอและลูกที่ยังไม่เกิดไป จากนั้นเขาสวมหน้ากากสีดำและใช้ถุงมือดำของ Nemu ซึ่งเก็บอาวุธได้เก้าชนิด เขาออกตามหาผู้ที่อยู่เบื้องหลังเหตุการณ์และความจริงเกี่ยวกับ Elisia."}
+  ]
+ }
+};
+let currentUniverse="dorm";
+function chooseUniverse(id,btn){
+ currentUniverse=id;
+ document.querySelectorAll("#universeNav button").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ document.getElementById("universeKicker").textContent=universes[id].kicker;
+ document.getElementById("universeTitle").textContent=universes[id].title;
+ document.getElementById("universeDescription").textContent=universes[id].description;
+ showSection("world",document.getElementById("worldTab"));
+ renderCards();
+ goHome();
 }
-function goBack(){
-  pages.forEach(p=>document.getElementById(p).hidden=(p!==previousPage));
-  window.scrollTo(0,0);
+function showSection(which,btn){
+ document.getElementById("worldSection").classList.toggle("hidden",which!=="world");
+ document.getElementById("charactersSection").classList.toggle("hidden",which!=="characters");
+ document.getElementById("worldTab").classList.toggle("active",which==="world");
+ document.getElementById("charactersTab").classList.toggle("active",which==="characters");
 }
-function showHome(which){
-  previousPage=which==='characters'?'charactersHome':'worldHome';
-  pages.forEach(p=>document.getElementById(p).hidden=true);
-  document.getElementById(previousPage).hidden=false;
-  document.getElementById('worldTab').classList.toggle('active',which==='world');
-  document.getElementById('charactersTab').classList.toggle('active',which==='characters');
-  window.scrollTo(0,0);
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function renderCards(){
+ const u=universes[currentUniverse];
+ document.getElementById("worldSection").innerHTML='<div class="grid">'+u.world.map(c=>`<button class="card" onclick="openDetail('world','${c.id}')"><span class="arrow">↗</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p></button>`).join("")+'</div>';
+ document.getElementById("charactersSection").innerHTML='<div class="grid">'+u.characters.map(c=>`<button class="card" onclick="openDetail('character','${c.id}')"><span class="arrow">↗</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p></button>`).join("")+'</div>';
 }
+function openDetail(type,id){
+ const u=universes[currentUniverse];
+ const item=(type==="world"?u.world:u.characters).find(c=>c.id===id);
+ if(!item)return;
+ document.getElementById("home").classList.add("hidden");
+ document.getElementById("detail").classList.remove("hidden");
+ const paragraphs=item.body.split("\n\n").map(p=>`<p>${escapeHtml(p)}</p>`).join("");
+ document.getElementById("detailContent").innerHTML=`<div class="panel"><div class="kicker">${type==="world"?"WORLD LORE":"CHARACTER PROFILE"}</div><h2 class="profile-title">${escapeHtml(item.title)}</h2><p class="muted">${escapeHtml(item.desc)}</p><hr>${paragraphs}<hr><div class="notice">ข้อมูลนี้เป็นส่วนหนึ่งของคลังต้นฉบับ สามารถกลับมาแก้ไขหรือเพิ่มรายละเอียดได้ภายหลัง</div></div>`;
+ window.scrollTo(0,0);
+}
+function goHome(){
+ document.getElementById("detail").classList.add("hidden");
+ document.getElementById("home").classList.remove("hidden");
+ window.scrollTo(0,0);
+}
+renderCards();
 </script>
 </body>
 </html>
-
