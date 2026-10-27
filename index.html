@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -99,8 +100,8 @@ const universes = {
    {id:"elisia",title:"เหตุการณ์ Elisia",desc:"ปมสำคัญในเส้นเรื่องของ 18 Y",body:"เหตุการณ์ Elisia เป็นจุดเปลี่ยนสำคัญในชีวิตของ 18 Y และเป็นส่วนหนึ่งของปริศนาที่เขาตามหาความจริงอยู่ รายละเอียดเพิ่มเติมจะถูกเปิดเผยเมื่อเรื่องดำเนินไป"}
   ],
   characters:[
-   {id:"kiuas",title:"Kiuas",desc:"เด็กสาวผู้เรียนรู้การเอาตัวรอดในโลกอันโหดร้าย",body:"Kiuas เติบโตในดินแดนที่ล่มสลายและเรียนรู้ที่จะเอาตัวรอดด้วยการหลบซ่อนและเฝ้ามองผู้อื่น หลังเหตุการณ์ที่ทำให้เธอสูญเสียผู้คนที่เคยแบ่งปันอาหารให้ เธอจึงตั้งชื่อใหม่ให้ตัวเองว่า Kiuas เธอมีความสามารถในการรับรู้ตำแหน่งของสิ่งมีชีวิตรอบตัว และปล่อยออร่าที่ทำให้ศัตรูเชื่องช้าลงได้\\n\\nแม้จะทำหน้าตลกหรือปฏิเสธความรับผิดชอบเมื่อหวาดกลัว แต่เบื้องหลังนั้นคือความรู้สึกผิดและความกลัวที่ยังไม่คลี่คลาย"},
-   {id:"18y",title:"18 Y",desc:"Grade 2 Fixer · ชายผู้ตามหาความจริง",body:"18 Y เคยเป็นคนธรรมดาที่พยายามยิ้มสู้กับชีวิต ก่อนเข้าร่วมองค์กร K.A.L เพื่อต่อต้าน Elisia เขาเคยต่อสู้กับ Lim อย่างสูสีและได้รับบาดแผลที่มือขวา ซึ่งต้องพันผ้าไว้เสมอ\\n\\nภายหลังเขาได้ใช้ชีวิตร่วมกับ Nemu แต่ภัยพิบัติ Elisia พรากเธอและลูกที่ยังไม่เกิดไป จากนั้นเขาสวมหน้ากากสีดำและใช้ถุงมือดำของ Nemu ซึ่งเก็บอาวุธได้เก้าชนิด เขาออกตามหาผู้ที่อยู่เบื้องหลังเหตุการณ์และความจริงเกี่ยวกับ Elisia."}
+   {id:"kiuas",title:"Kiuas",desc:"เด็กสาวผู้เรียนรู้การเอาตัวรอดในโลกอันโหดร้าย",body:"Kiuas เติบโตในดินแดนที่ล่มสลายและเรียนรู้ที่จะเอาตัวรอดด้วยการหลบซ่อนและเฝ้ามองผู้อื่น หลังเหตุการณ์ที่ทำให้เธอสูญเสียผู้คนที่เคยแบ่งปันอาหารให้ เธอจึงตั้งชื่อใหม่ให้ตัวเองว่า Kiuas เธอมีความสามารถในการรับรู้ตำแหน่งของสิ่งมีชีวิตรอบตัว และปล่อยออร่าที่ทำให้ศัตรูเชื่องช้าลงได้\n\nแม้จะทำหน้าตลกหรือปฏิเสธความรับผิดชอบเมื่อหวาดกลัว แต่เบื้องหลังนั้นคือความรู้สึกผิดและความกลัวที่ยังไม่คลี่คลาย"},
+   {id:"18y",title:"18 Y",desc:"Grade 2 Fixer · ชายผู้ตามหาความจริง",body:"18 Y เคยเป็นคนธรรมดาที่พยายามยิ้มสู้กับชีวิต ก่อนเข้าร่วมองค์กร K.A.L เพื่อต่อต้าน Elisia เขาเคยต่อสู้กับ Lim อย่างสูสีและได้รับบาดแผลที่มือขวา ซึ่งต้องพันผ้าไว้เสมอ\n\nภายหลังเขาได้ใช้ชีวิตร่วมกับ Nemu แต่ภัยพิบัติ Elisia พรากเธอและลูกที่ยังไม่เกิดไป จากนั้นเขาสวมหน้ากากสีดำและใช้ถุงมือดำของ Nemu ซึ่งเก็บอาวุธได้เก้าชนิด เขาออกตามหาผู้ที่อยู่เบื้องหลังเหตุการณ์และความจริงเกี่ยวกับ Elisia."}
   ]
  }
 };
@@ -125,8 +126,8 @@ function showSection(which,btn){
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function renderCards(){
  const u=universes[currentUniverse];
- document.getElementById("worldSection").innerHTML='<div class="grid">'+u.world.map(c=>`<button class="card" onclick="openDetail('world','${c.id}')"><span class="arrow">↗</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p></button>`).join("")+'</div>';
- document.getElementById("charactersSection").innerHTML='<div class="grid">'+u.characters.map(c=>`<button class="card" onclick="openDetail('character','${c.id}')"><span class="arrow">↗</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p></button>`).join("")+'</div>';
+ document.getElementById("worldSection").innerHTML='<div class="grid">'+u.world.map(c=>`<button class="card" onclick="openDetail(\'world\',\'${c.id}\')"><span class="arrow">↗</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p></button>`).join("")+'</div>';
+ document.getElementById("charactersSection").innerHTML='<div class="grid">'+u.characters.map(c=>`<button class="card" onclick="openDetail(\'character\',\'${c.id}\')"><span class="arrow">↗</span><h3>${escapeHtml(c.title)}</h3><p>${escapeHtml(c.desc)}</p></button>`).join("")+'</div>';
 }
 function openDetail(type,id){
  const u=universes[currentUniverse];
