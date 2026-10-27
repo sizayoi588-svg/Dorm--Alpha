@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dorm Alpha | OC Archive</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101019;
+      color: #f1efff;
+    }
+    header {
+      padding: 28px 20px;
+      background: #191725;
+      border-bottom: 1px solid #49405f;
+    }
+    .tag { color: #b7a4ff; letter-spacing: 3px; font-size: 12px; }
+    h1 { font-size: 34px; margin: 12px 0; }
+    header p { color: #bcb8ca; line-height: 1.7; }
+    nav { display: flex; gap: 10px; margin-top: 22px; }
+    button {
+      background: #29243b;
+      color: white;
+      border: 1px solid #645486;
+      border-radius: 9px;
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+    button.active { background: #7455bd; }
+    main { padding: 22px 18px; max-width: 700px; margin: auto; }
+    .panel {
+      background: #191925;
+      border: 1px solid #393447;
+      border-radius: 14px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    h2 { color: #c7b7ff; }
+    .muted { color: #b9b5c8; line-height: 1.8; }
+    .entry { border-top: 1px solid #393447; padding-top: 12px; }
+    footer { text-align: center; padding: 25px; color: #8f899f; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="tag">ORIGINAL CHARACTER ARCHIVE</div>
+    <h1>Dorm Alpha</h1>
+    <p>ยินดีต้อนรับสู่โลกที่ไม่ควรมีใครได้รับคำเชิญ</p>
+    <nav>
+      <button class="active" onclick="showPage('world', this)">World</button>
+      <button onclick="showPage('characters', this)">Characters</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="world">
+      <div class="panel">
+        <h2>World Archive</h2>
+        <p class="muted">เรื่องราวของจักรวาล Dorm Alpha</p>
+      </div>
+      <div class="panel">
+        <h2>จุดเริ่มต้น</h2>
+        <p class="muted">หลายศตวรรษก่อน รอยแยกบนท้องฟ้าได้เปลี่ยนแปลงโลกไปตลอดกาล พลังอันตรายปรากฏขึ้น และองค์กรต่าง ๆ เริ่มล่มสลาย</p>
+      </div>
+      <div class="panel">
+        <h2>คำเชิญ</h2>
+        <p class="muted">หากคุณได้รับคำเชิญจาก Dorm Alpha... จงเผามันทิ้ง</p>
+      </div>
+    </section>
+
+    <section id="characters" hidden>
+      <div class="panel">
+        <h2>Character Archive</h2>
+        <p class="muted">คลังตัวละคร OC</p>
+        <div class="entry">
+          <h3>Nemu</h3>
+          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
+        </div>
+        <div class="entry">
+          <h3>Walking Hell</h3>
+          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
+        </div>
+        <div class="entry">
+          <h3>Crores</h3>
+          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
+        </div>
+        <div class="entry">
+          <h3>Xhoe</h3>
+          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Dorm Alpha · Original World & Characters</footer>
+
+  <script>
+    function showPage(page, button) {
+      document.getElementById('world').hidden = page !== 'world';
+      document.getElementById('characters').hidden = page !== 'characters';
+      document.querySelectorAll('nav button').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      button.classList.add('active');
+    }
+  </script>
+</body>
+</html>
