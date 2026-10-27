@@ -2,111 +2,154 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dorm Alpha | OC Archive</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #101019;
-      color: #f1efff;
-    }
-    header {
-      padding: 28px 20px;
-      background: #191725;
-      border-bottom: 1px solid #49405f;
-    }
-    .tag { color: #b7a4ff; letter-spacing: 3px; font-size: 12px; }
-    h1 { font-size: 34px; margin: 12px 0; }
-    header p { color: #bcb8ca; line-height: 1.7; }
-    nav { display: flex; gap: 10px; margin-top: 22px; }
-    button {
-      background: #29243b;
-      color: white;
-      border: 1px solid #645486;
-      border-radius: 9px;
-      padding: 12px 16px;
-      font-size: 15px;
-    }
-    button.active { background: #7455bd; }
-    main { padding: 22px 18px; max-width: 700px; margin: auto; }
-    .panel {
-      background: #191925;
-      border: 1px solid #393447;
-      border-radius: 14px;
-      padding: 20px;
-      margin: 16px 0;
-    }
-    h2 { color: #c7b7ff; }
-    .muted { color: #b9b5c8; line-height: 1.8; }
-    .entry { border-top: 1px solid #393447; padding-top: 12px; }
-    footer { text-align: center; padding: 25px; color: #8f899f; font-size: 12px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dorm Alpha</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101019;color:#f1efff;font-family:Arial,sans-serif}
+header{padding:24px 18px;background:#191725;border-bottom:1px solid #49405f}
+.tag{color:#b7a4ff;letter-spacing:3px;font-size:11px}
+h1{font-size:30px;margin:12px 0}
+p{line-height:1.8}
+header p,.muted{color:#bcb8ca}
+nav{display:flex;gap:10px;margin-top:18px}
+button{background:#29243b;color:white;border:1px solid #645486;border-radius:9px;padding:11px 15px;font-size:14px;cursor:pointer}
+button.active,.primary{background:#7455bd}
+main{padding:20px 16px;max-width:720px;margin:auto}
+.card{display:block;width:100%;text-align:left;background:#191925;border:1px solid #393447;border-radius:14px;padding:18px;margin:12px 0;color:#f1efff}
+.card h2,.card h3{color:#c7b7ff;margin-top:0}
+.card p{margin-bottom:0}
+.card:active{background:#29243b}
+.back{margin-bottom:16px}
+h2{color:#c7b7ff}
+.entry{border-top:1px solid #393447;padding:14px 0}
+footer{text-align:center;padding:25px;color:#8f899f;font-size:12px}
+[hidden]{display:none!important}
+</style>
 </head>
 <body>
-  <header>
-    <div class="tag">ORIGINAL CHARACTER ARCHIVE</div>
-    <h1>Dorm Alpha</h1>
-    <p>ยินดีต้อนรับสู่โลกที่ไม่ควรมีใครได้รับคำเชิญ</p>
-    <nav>
-      <button class="active" onclick="showPage('world', this)">World</button>
-      <button onclick="showPage('characters', this)">Characters</button>
-    </nav>
-  </header>
+<header>
+  <div class="tag">ORIGINAL CHARACTER ARCHIVE</div>
+  <h1>Dorm Alpha</h1>
+  <p>ยินดีต้อนรับสู่โลกที่ไม่ควรมีใครได้รับคำเชิญ</p>
+  <nav>
+    <button id="worldTab" class="active" onclick="showHome('world')">World</button>
+    <button id="charactersTab" onclick="showHome('characters')">Characters</button>
+  </nav>
+</header>
 
-  <main>
-    <section id="world">
-      <div class="panel">
-        <h2>World Archive</h2>
-        <p class="muted">เรื่องราวของจักรวาล Dorm Alpha</p>
-      </div>
-      <div class="panel">
-        <h2>จุดเริ่มต้น</h2>
-        <p class="muted">หลายศตวรรษก่อน รอยแยกบนท้องฟ้าได้เปลี่ยนแปลงโลกไปตลอดกาล พลังอันตรายปรากฏขึ้น และองค์กรต่าง ๆ เริ่มล่มสลาย</p>
-      </div>
-      <div class="panel">
-        <h2>คำเชิญ</h2>
-        <p class="muted">หากคุณได้รับคำเชิญจาก Dorm Alpha... จงเผามันทิ้ง</p>
-      </div>
-    </section>
+<main>
+  <section id="worldHome">
+    <button class="card" onclick="openPage('archivePage')">
+      <h2>World Archive ↗</h2>
+      <p class="muted">รวมข้อมูลและเรื่องราวของจักรวาล Dorm Alpha</p>
+    </button>
+    <button class="card" onclick="openPage('originPage')">
+      <h2>จุดเริ่มต้น ↗</h2>
+      <p class="muted">โลกเปลี่ยนแปลงไปได้อย่างไร?</p>
+    </button>
+    <button class="card" onclick="openPage('invitationPage')">
+      <h2>คำเชิญ ↗</h2>
+      <p class="muted">หากได้รับคำเชิญจาก Dorm Alpha...</p>
+    </button>
+  </section>
 
-    <section id="characters" hidden>
-      <div class="panel">
-        <h2>Character Archive</h2>
-        <p class="muted">คลังตัวละคร OC</p>
-        <div class="entry">
-          <h3>Nemu</h3>
-          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
-        </div>
-        <div class="entry">
-          <h3>Walking Hell</h3>
-          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
-        </div>
-        <div class="entry">
-          <h3>Crores</h3>
-          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
-        </div>
-        <div class="entry">
-          <h3>Xhoe</h3>
-          <p class="muted">ข้อมูลตัวละครยังรอการเติมเต็ม</p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section id="charactersHome" hidden>
+    <h2>Character Archive</h2>
+    <p class="muted">เลือกตัวละครเพื่อเปิดอ่านข้อมูล</p>
+    <button class="card" onclick="openPage('nemuPage')">
+      <h2>Nemu ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
+    </button>
+    <button class="card" onclick="openPage('walkingPage')">
+      <h2>Walking Hell ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
+    </button>
+    <button class="card" onclick="openPage('croresPage')">
+      <h2>Crores ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
+    </button>
+    <button class="card" onclick="openPage('xhoePage')">
+      <h2>Xhoe ↗</h2><p class="muted">เปิดข้อมูลตัวละคร</p>
+    </button>
+  </section>
 
-  <footer>Dorm Alpha · Original World & Characters</footer>
+  <section id="archivePage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>World Archive</h2>
+    <p>คลังบันทึกเรื่องราวของโลกและจักรวาล Dorm Alpha</p>
+    <p class="muted">หน้านี้จะรวบรวมประวัติ เหตุการณ์สำคัญ กฎของโลก และข้อมูลที่คุณเพิ่มในอนาคต</p>
+  </section>
 
-  <script>
-    function showPage(page, button) {
-      document.getElementById('world').hidden = page !== 'world';
-      document.getElementById('characters').hidden = page !== 'characters';
-      document.querySelectorAll('nav button').forEach(function(b) {
-        b.classList.remove('active');
-      });
-      button.classList.add('active');
-    }
-  </script>
+  <section id="originPage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>จุดเริ่มต้น</h2>
+    <p>หลายศตวรรษก่อน รอยแยกบนท้องฟ้าได้เปลี่ยนแปลงโลกไปตลอดกาล</p>
+    <p>พลังอันตรายปรากฏขึ้น และองค์กรต่าง ๆ เริ่มล่มสลาย</p>
+    <p class="muted">นี่คือจุดเริ่มต้นของเรื่องราวที่ยังมีอีกหลายส่วนรอการเปิดเผย</p>
+  </section>
+
+  <section id="invitationPage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>คำเชิญจาก Dorm Alpha</h2>
+    <p>หากคุณได้รับคำเชิญจาก Dorm Alpha...</p>
+    <h3>จงเผามันทิ้ง</h3>
+    <p class="muted">อย่าคิดว่าคำเชิญทุกฉบับถูกส่งมาเพื่อช่วยเหลือคุณ</p>
+  </section>
+
+  <section id="nemuPage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>Nemu</h2>
+    <p class="muted">ข้อมูลตัวละคร</p>
+    <p>ตัวละครที่มีเรื่องราวและความรู้สึกเป็นของตัวเอง</p>
+    <p class="muted">ประวัติและรายละเอียดเพิ่มเติมจะเพิ่มได้ภายหลัง</p>
+  </section>
+
+  <section id="walkingPage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>Walking Hell</h2>
+    <p>เรื่องราวเริ่มต้นบนรถไฟที่พาผู้โดยสารไปยังจุดหมายในเวลาเพียงไม่กี่วินาที แต่ประสบการณ์ภายในกลับยาวนานอย่างเหลือเชื่อ</p>
+    <p class="muted">การเดินทางครั้งนั้นเปลี่ยนชีวิตผู้โดยสารไปตลอดกาล</p>
+  </section>
+
+  <section id="croresPage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>Crores</h2>
+    <p class="muted">ข้อมูลประวัติ พลัง และเรื่องราวของตัวละครยังรอการเพิ่มเติม</p>
+  </section>
+
+  <section id="xhoePage" class="detail" hidden>
+    <button class="back" onclick="goBack()">← กลับ</button>
+    <h2>Xhoe</h2>
+    <p class="muted">ข้อมูลประวัติ พลัง และเรื่องราวของตัวละครยังรอการเพิ่มเติม</p>
+  </section>
+</main>
+
+<footer>Dorm Alpha · Original World & Characters</footer>
+
+<script>
+const pages=['worldHome','charactersHome','archivePage','originPage',
+'invitationPage','nemuPage','walkingPage','croresPage','xhoePage'];
+let previousPage='worldHome';
+
+function openPage(id){
+  const current=pages.find(p=>!document.getElementById(p).hidden);
+  if(current && (current==='worldHome'||current==='charactersHome')){
+    previousPage=current;
+  }
+  pages.forEach(p=>document.getElementById(p).hidden=(p!==id));
+  window.scrollTo(0,0);
+}
+function goBack(){
+  pages.forEach(p=>document.getElementById(p).hidden=(p!==previousPage));
+  window.scrollTo(0,0);
+}
+function showHome(which){
+  previousPage=which==='characters'?'charactersHome':'worldHome';
+  pages.forEach(p=>document.getElementById(p).hidden=true);
+  document.getElementById(previousPage).hidden=false;
+  document.getElementById('worldTab').classList.toggle('active',which==='world');
+  document.getElementById('charactersTab').classList.toggle('active',which==='characters');
+  window.scrollTo(0,0);
+}
+</script>
 </body>
 </html>
